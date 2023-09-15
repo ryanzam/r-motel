@@ -66,8 +66,8 @@ const Modal: FC<IModalProps> = ({
                     </div>
                     <div className="flex flex-col p-6 gap-4">
                         <div className="flex flex-row items-center w-full gap-5">
+                            {secondaryAction && secondaryActionText && <Button disabled={disabled} text={secondaryActionText} onClick={secondaryAction} />}
                             <Button primary={primaryBtn} disabled={disabled} text={actionText} onClick={handleSubmit} />
-                            {secondaryAction && secondaryActionText && <Button disabled={disabled} text={actionText} onClick={secondaryAction} />}
                         </div>
                         {footer}
                     </div>

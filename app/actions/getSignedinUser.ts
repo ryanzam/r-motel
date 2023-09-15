@@ -19,7 +19,12 @@ export default async function getSigninUser() {
 
         if(!signedinUser) return null;
 
-        return signedinUser;
+        return {
+            ...signedinUser, 
+            createdAt: signedinUser.createdAt.toISOString(),
+            updatedAt: signedinUser.updatedAt.toISOString(),
+            emailVerified: signedinUser.emailVerified?.toISOString() || null
+        }
     }  catch(err: any) {
         return null;
     }

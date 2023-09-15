@@ -1,12 +1,13 @@
-import { User } from "@prisma/client";
 import Container from "../Container";
 import Brand from "./Brand";
 import Search from "./Search";
 import Usernav from "./Usernav";
 import { FC } from "react";
+import { SafeUser } from "@/app/types";
+import Categories from "./Categories";
 
 interface INavbarProps {
-    signedinUser?: User | null
+    signedinUser?: SafeUser | null
 }
 
 const Navbar:FC<INavbarProps> = ({ signedinUser }) => {
@@ -21,6 +22,7 @@ const Navbar:FC<INavbarProps> = ({ signedinUser }) => {
                 </div>
             </Container>
         </div>
+        <Categories />
     </div>
    )
 }

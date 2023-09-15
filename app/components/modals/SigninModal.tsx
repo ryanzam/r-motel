@@ -7,7 +7,7 @@ import { AiOutlineGithub } from "react-icons/ai"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 
 import useSigninModal from "@/app/hooks/useSigninModal"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import Modal from "./Modal"
 import Input from "../inputs/Input"
 import toast from "react-hot-toast"
@@ -30,7 +30,7 @@ const SigninModal = () => {
                 errors 
             } 
         } = useForm<FieldValues> ({ defaultValues: { 
-            name: "", email:"", password: ""
+            email:"", password: ""
         }});
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -51,6 +51,11 @@ const SigninModal = () => {
                 }
             })
     }
+
+    const toggle = useCallback(() => {
+        modal.onCloase();
+        registrationModal.onOpen();
+    }, [modal, registrationModal]);
 
     const modalBody = (
         <div className="">
@@ -80,18 +85,18 @@ const SigninModal = () => {
     const modalFooter = (
         <div className="flex flex-col mt-3 gap-3">
             <hr className="mb-5"/>
-            <Button text="Sign up with Github"
+            <Button text="Signin with Github"
                     icon={AiOutlineGithub}
-                    onClick={() => {}}/>
-            <Button text="Sign up with Google"
+                    onClick={() => signIn("github")}/>
+            <Button text="Signin with Google"
                     icon={FcGoogle}
-                    onClick={() => {}}/>
+                    onClick={() => signIn("google")}/>
 
             <div className="flex items-center justify-center m-2 gap-3">
-                <div>Already have an acoount?</div>
+                <div>Don't have an acoount yet?</div>
                 <div className="cursor-pointer hover:underline hover:text-neutral-700"
-                    onClick={modal.onCloase}>
-                    Sign in
+                    onClick={toggle}>
+                    Create an account
                 </div>
             </div>
         </div>
