@@ -1,6 +1,6 @@
 import getListing from "@/app/actions/getListing";
 import getSigninUser from "@/app/actions/getSignedinUser";
-import NoListing from "@/app/components/NoListing";
+import Empty from "@/app/components/Empty";
 import Listing from "./Listing";
 import getReservations from "@/app/actions/getReservations";
 
@@ -14,7 +14,7 @@ const ListingPage = async ({ params } : { params: IParams }) => {
     const reservations = await getReservations(params);
     const signedInuser = await getSigninUser();
 
-    if(!listing) return <NoListing />
+    if(!listing) return <Empty />
     
     return (<Listing listing={listing} 
                 reservations={reservations}

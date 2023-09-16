@@ -82,7 +82,7 @@ const Listing:FC<IListingProps> = ({ listing, signedInuser, reservations = [] })
         }).then(() =>{
             toast.success("Listing is reserved.")
             setDateRange(initDateRng);
-            router.refresh();
+            router.push("/visits")
         }).catch((error) => {
             toast.error(error.message);
         }).finally(() => {

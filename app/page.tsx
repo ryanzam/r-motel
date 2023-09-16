@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Container from './components/Container'
-import NoListing from './components/NoListing';
+import NoListing from './components/Empty';
 import getListings from './actions/getListings';
 import ListingCard from './components/listings/ListingCard';
 import getSigninUser from './actions/getSignedinUser';

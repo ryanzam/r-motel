@@ -1,7 +1,7 @@
 'use client';
 
 import useLocation from "@/app/hooks/useLocation";
-import { SafeListing, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { Reservation } from "@prisma/client";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ interface IListingCardProps {
     actionText?: string;
     actionId?: string;
     onAction?: (id: string) => void;
-    reservation?: Reservation;
+    reservation?: SafeReservation;
 }
 
 const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actionText, actionId = "", onAction, reservation }) => {
@@ -52,7 +52,7 @@ const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actio
         onAction?.(actionId);
     }, [actionId, onAction, disabled]);
 
-    return <div className="col-span-1 cursor-pointer group"
+    return <div className="flex gap-2 flex-col col-span-1 cursor-pointer group"
                 onClick={() => router.push(`/listings/${data.id}`)}>
         <div className="w-full aspect-square relative rounded-lg overflow-hidden">
             <Image src={data.imageSrc}

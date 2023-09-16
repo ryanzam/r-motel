@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation";
 import { FC } from "react";
 import Button from "./buttons/Button";
 
-interface INoListingProps {
+interface IEmptyProps {
     title?: string;
     subTitle?: string;
     showRest?: boolean;
 }
 
-const NoListing:FC<INoListingProps> = ({ 
+const Empty:FC<IEmptyProps> = ({ 
     title = "No matches found.", 
     subTitle = "Try changing different filters.", 
     showRest
@@ -26,4 +26,4 @@ const NoListing:FC<INoListingProps> = ({
     </div>
 }
  
-export default NoListing;
+export default Empty;
