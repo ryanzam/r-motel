@@ -1,17 +1,13 @@
 'use client';
 
 import { Marker, TileLayer, MapContainer } from "react-leaflet";
-import L from "leaflet";
-
-import marketIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import marketIcon from "leaflet/dist/images/marker-icon.png";
-import marketShadow from "leaflet/dist/images/marker-shadow.png";
+import L, { LatLngExpression } from "leaflet";
 
 import "leaflet/dist/leaflet.css";
 import { FC } from "react";
 
 interface IMapProps {
-    center?: number;
+    center?: [number, number];
 }
 
 const Map:FC<IMapProps> = ({ center }) => {
@@ -24,6 +20,7 @@ const Map:FC<IMapProps> = ({ center }) => {
         <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {center && <Marker position={center as LatLngExpression} />}
     </MapContainer>
 }
  

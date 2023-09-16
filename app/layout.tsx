@@ -32,7 +32,9 @@ export default async function RootLayout({
         <SigninModal />
         <RentModal />
         <Navbar signedinUser={signedinUser}/>
-        {children}
+        <div className='py-20'>
+          {children}
+        </div>
         </body>
     </html>
   )

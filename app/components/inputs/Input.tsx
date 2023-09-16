@@ -18,7 +18,7 @@ interface IInputProps {
 
 const Input:FC<IInputProps> = ({id, label, disabled, required, type, priceFormat, placeholder, errors, register}) => {
     return <div className="relative w-full">
-        {priceFormat && <FaEuroSign className="text-neutral-600 absolute left-3 top-5" size={20}/>}
+        {priceFormat && <FaEuroSign className="text-neutral-600 absolute left-3 top-12" size={16}/>}
         <input id={id} 
                 className={`peer w-full p-4 mt-6 border-2 rounded-md disabled:opacity-60 disabled:cursor-not-allowed
                             ${priceFormat ? "pl-8" : "pl-3"}

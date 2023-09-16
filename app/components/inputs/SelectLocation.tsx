@@ -21,8 +21,10 @@ const SelectLocation: FC<ISelectLocationProps> = ({ value, onChange }) => {
 
     const { getAllCountries } = useLocation();
 
-    return <div >
+    return <div>
         <Select placeholder="Anywhere"
+            menuPortalTarget={document.body} 
+            styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
             options={getAllCountries()}
             isClearable 
             value={value}
