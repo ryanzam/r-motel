@@ -30,12 +30,13 @@ const useFavorite = ({ listingId, signedInUser }: IUseFavorite) => {
             let req;
             if(isAlreadyFavorite) {
                 req = () => axios.delete(`/api/favorites/${listingId}`);
+                toast.success("Favorite removed!");
             } else {
                 req = () => axios.post(`/api/favorites/${listingId}`);
+                toast.success("Favorite added!");
             }
             await req();
             router.refresh();
-            toast.success("Item favorited!");
         } catch (error: any) {
             toast.error(error);
         }
