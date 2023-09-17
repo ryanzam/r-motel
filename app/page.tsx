@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import Container from './components/Container'
 import NoListing from './components/Empty';
-import getListings from './actions/getListings';
+import getListings, { IListingsParams } from './actions/getListings';
 import ListingCard from './components/listings/ListingCard';
 import getSigninUser from './actions/getSignedinUser';
 
-export default async function Home() {
+interface IHomeProps {
+  searchParams: IListingsParams;
+}
 
-  const listings = await getListings();
+const Home = async ({ searchParams }: IHomeProps) => {
+
+  const listings = await getListings(searchParams);
   const signedInUser = await getSigninUser();
 
   if(listings.length == 0) 
@@ -21,3 +25,6 @@ export default async function Home() {
     </div>
   </Container>)
 }
+
+
+export default Home;

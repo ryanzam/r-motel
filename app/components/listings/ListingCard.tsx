@@ -74,7 +74,7 @@ const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actio
             <div className="font-semibold">€ {price}</div>
             {!reservation && <div className="font-light">/night</div>}
         </div>
-        {onAction && actionText && <Button text={actionText} 
+        {onAction && actionText && <Button primary text={actionText} 
                                         disabled={disabled}
                                         onClick={handleCancel}/>}
     </div>

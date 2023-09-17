@@ -55,9 +55,9 @@ const Usernav:FC<IUsernavProps> = ({ signedinUser }) => {
                        {signedinUser ? (
                             <>
                                 <UsernavMenu text="My visits" onClick={() => router.push("/visits")}/>
-                                <UsernavMenu text="My favorites" onClick={() => {}}/>
-                                <UsernavMenu text="My properties" onClick={() => {}}/>
-                                <UsernavMenu text="My reservations" onClick={() => {}}/>
+                                <UsernavMenu text="My favorites" onClick={() => router.push("/favorites")}/>
+                                <UsernavMenu text="My properties" onClick={() => router.push("/properties")}/>
+                                <UsernavMenu text="My reservations" onClick={() => router.push("/reservations")}/>
                                 <hr />
                                 <UsernavMenu text="Sign out" onClick={() => signOut()}/>
                             </>
