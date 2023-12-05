@@ -93,7 +93,7 @@ const SigninModal = () => {
                     onClick={() => signIn("google")}/>
 
             <div className="flex items-center justify-center m-2 gap-3">
-                <div>Don't have an acoount yet?</div>
+                <div>Don&apos;t have an acoount yet?</div>
                 <div className="cursor-pointer hover:underline hover:text-neutral-700"
                     onClick={toggle}>
                     Create an account
