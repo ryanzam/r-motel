@@ -1,5 +1,7 @@
-<h1 align="center"> R-MOTEL</h1>
-<p align="center">Tranforming Spaces into Unforgettable Experiences</p>
+<h1 align="center"> R-Motel 🏠 </h1>
+
+[![Stars](https://img.shields.io/github/stars/ryanzam/r-motel?style=social)](https://github.com/ryanzam/r-motel) [![Deploy](https://img.shields.io/badge/Deploy-Vercel-brightgreen)](https://vercel.com/new/clone?repository-url=https://github.com/ryanzam/r-motel)
+
 <div align="center">
   <img alt="last-commit" src="https://img.shields.io/github/last-commit/ryanzam/r-motel?style=flat&amp;logo=git&amp;logoColor=white&amp;color=0080ff" class="inline-block mx-1" style="margin: 0px 2px;">
   <img alt="repo-top-language" src="https://img.shields.io/github/languages/top/ryanzam/r-motel?style=flat&amp;color=0080ff" class="inline-block mx-1" style="margin: 0px 2px;">
