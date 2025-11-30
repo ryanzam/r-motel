@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useCallback, useMemo } from "react";
 import { SafeUser } from "../types";
 import { useRouter } from "next/navigation";

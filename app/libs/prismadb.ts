@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client"
+import "dotenv/config";
+import { PrismaClient } from '../../generated/prisma/client'
 
 declare global {
     var prisma: PrismaClient | undefined;

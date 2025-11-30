@@ -2,7 +2,6 @@
 
 import useLocation from "@/app/hooks/useLocation";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import { FC, useCallback, useMemo } from "react";

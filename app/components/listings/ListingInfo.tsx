@@ -8,10 +8,12 @@ import Image from "next/image";
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
 
-const Map = dynamic(() => import("../Map"), 
-{
-    ssr: false
-});
+const Map = dynamic(() => import("../Map"), {
+        ssr: false,
+        loading: () => (
+            <div className="h-[35vh] rounded-lg bg-gray-200 animate-pulse" />
+        ),
+    });
 
 interface IListingInfoProps {
     user?: SafeUser;
@@ -27,13 +29,13 @@ interface IListingInfoProps {
     } | undefined
 }
 
-const ListingInfo:FC<IListingInfoProps> = ({ user, description, roomNumber, guestNumber, bathroomNumber, locationValue, category }) => {
-    
+const ListingInfo: FC<IListingInfoProps> = ({ user, description, roomNumber, guestNumber, bathroomNumber, locationValue, category }) => {
+
     const { getCountryByValue } = useLocation();
 
     const coordinates = getCountryByValue(locationValue)?.latlng;
-    
-    return ( <div className="flex flex-col gap-6 col-span-4">
+
+    return (<div className="flex flex-col gap-6 col-span-4">
         <div className="flex flex-col gap-2">
             <div className="flex items-center">
                 <div className="text-lg font-semibold">Offered by {user?.name}</div>
@@ -41,23 +43,29 @@ const ListingInfo:FC<IListingInfoProps> = ({ user, description, roomNumber, gues
                     className="ml-2"
                     src={user?.image!}
                     height={20}
-                    width={20}/>
+                    width={20} />
             </div>
 
             <div className="text-neutral-400">
                 <div className="text-sm">{guestNumber} guests {roomNumber} rooms {bathroomNumber} bathrooms</div>
             </div>
         </div>
-        
-        <hr/>
-        {category && <ListingCategory icon={category.icon} text={category.text} description={category.description}/>}
+
+        <hr />
+        {category && <ListingCategory icon={category.icon} text={category.text} description={category.description} />}
         <hr />
 
         <div className="text-lg text-neutral-500">{description}</div>
-        <hr/>
+        <hr />
 
-        <Map center={coordinates} />
-    </div> );
+        {coordinates ? (
+            <Map center={coordinates} />
+        ) : (
+            <div className="h-[35vh] rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-500">
+                Location not available
+            </div>
+        )}
+    </div>);
 }
- 
+
 export default ListingInfo;
