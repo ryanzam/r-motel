@@ -2,7 +2,6 @@
 
 import useLocation from "@/app/hooks/useLocation";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import { FC, useCallback, useMemo } from "react";
@@ -26,6 +25,8 @@ const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actio
     const { getCountryByValue } = useLocation();
 
     const location = getCountryByValue(data.locationValue);
+
+    const imageSrc = data?.imageSrc !== ""  ? data.imageSrc : null
 
     const price = useMemo(() => {
         if(reservation) {
@@ -55,7 +56,7 @@ const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actio
     return <div className="flex gap-2 flex-col col-span-1 cursor-pointer group"
                 onClick={() => router.push(`/listings/${data.id}`)}>
         <div className="w-full aspect-square relative rounded-lg overflow-hidden">
-            <Image src={data.imageSrc}
+            <Image src={imageSrc}
                 alt="listing"
                 fill
                 className="h-full w-full object-cover group-hover:scale-110 transition"/>

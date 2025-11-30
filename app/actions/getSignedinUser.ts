@@ -11,21 +11,21 @@ export default async function getSigninUser() {
     try {
         const session = await getSession();
 
-        if(!session?.user?.email) return null;
+        if (!session?.user?.email) return null;
 
-        const signedinUser = await prisma.user.findUnique({ 
+        const signedinUser = await prisma.user.findUnique({
             where: { email: session.user.email as string }
         });
 
-        if(!signedinUser) return null;
+        if (!signedinUser) return null;
 
         return {
-            ...signedinUser, 
+            ...signedinUser,
             createdAt: signedinUser.createdAt.toISOString(),
             updatedAt: signedinUser.updatedAt.toISOString(),
             emailVerified: signedinUser.emailVerified?.toISOString() || null
         }
-    }  catch(err: any) {
+    } catch (err: any) {
         return null;
     }
 }

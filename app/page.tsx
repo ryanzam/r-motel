@@ -18,7 +18,7 @@ const Home = async ({ searchParams }: IHomeProps) => {
     return <NoListing showRest/>
 
   return (<Container>
-    <div className='pt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+    <div className='pt-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
       {listings.map(listing => {
         return <ListingCard key={listing.id} data={listing} signedInUser={signedInUser}/>
       })}
