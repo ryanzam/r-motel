@@ -33,11 +33,9 @@ export default async function RootLayout({
         <SigninModal />
         <RentModal />
         <Navbar signedinUser={signedinUser} />
-        <Suspense>
-          <div className='py-20'>
-            {children}
-          </div>
-        </Suspense>
+        <div className='py-20'>
+          {children}
+        </div>
       </body>
     </html>
   )

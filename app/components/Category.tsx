@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { IconType } from "react-icons";
-import { Suspense, useCallback } from "react";
+import { useCallback } from "react";
 
 interface CategoryProps {
   text: string;
@@ -12,41 +12,32 @@ interface CategoryProps {
 
 const Category: React.FC<CategoryProps> = ({ text, icon: Icon, selected }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const handleClick = useCallback(() => {
-    // Create a mutable copy of current params
-    const current = new URLSearchParams(searchParams?.toString() || "");
-
-    if (current.get("category") === text) {
-      current.delete("category");
+    const params = new URLSearchParams(window.location.search);
+    if (selected) {
+      params.delete("category");
     } else {
-      current.set("category", text);
+      params.set("category", text);
     }
-
-    // Build new URL
-    const url = current.toString() ? `/?${current.toString()}` : "/";
-
-    router.push(url);
-  }, [searchParams, text, router]);
+    router.push(`/?${params.toString()}`);
+  }, [selected, text, router]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div
-        onClick={handleClick}
-        className={`
+    <div
+      onClick={handleClick}
+      className={`
         flex flex-col items-center justify-center gap-2 p-3
         border-b-2 hover:text-neutral-800 transition cursor-pointer
         ${selected
-            ? "border-b-neutral-800 text-neutral-800"
-            : "border-transparent text-neutral-500"
-          }
+          ? "border-b-neutral-800 text-neutral-800"
+          : "border-transparent text-neutral-500"
+        }
       `}
-      >
-        <Icon size={26} />
-        <div className="font-medium text-sm">{text}</div>
-      </div>
-    </Suspense>
+    >
+      <Icon size={26} />
+      <div className="font-medium text-sm">{text}</div>
+    </div>
   );
 };
 
