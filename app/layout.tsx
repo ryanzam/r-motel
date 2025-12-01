@@ -8,6 +8,7 @@ import ToasterProvider from './providers/ToasterProvider';
 import SigninModal from './components/modals/SigninModal';
 import getSigninUser from './actions/getSignedinUser';
 import RentModal from './components/modals/RentModal';
+import { Suspense } from 'react';
 
 const font = Nunito({ subsets: ['latin'] })
 
@@ -31,11 +32,11 @@ export default async function RootLayout({
         <RegistrationModal />
         <SigninModal />
         <RentModal />
-        <Navbar signedinUser={signedinUser}/>
+        <Navbar signedinUser={signedinUser} />
         <div className='py-20'>
           {children}
         </div>
-        </body>
+      </body>
     </html>
   )
 }

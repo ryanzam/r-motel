@@ -1,27 +1,14 @@
-import Image from 'next/image'
+import { Suspense } from 'react';
 import Container from './components/Container'
-import NoListing from './components/Empty';
-import getListings, { IListingsParams } from './actions/getListings';
-import ListingCard from './components/listings/ListingCard';
-import getSigninUser from './actions/getSignedinUser';
+import ListingGrid from './components/listings/ListingGrid';
 
-interface IHomeProps {
-  searchParams: IListingsParams;
-}
-
-const Home = async ({ searchParams }: IHomeProps) => {
-
-  const listings = await getListings(searchParams);
-  const signedInUser = await getSigninUser();
-
-  if(listings.length == 0) 
-    return <NoListing showRest/>
+const Home = () => {
 
   return (<Container>
-    <div className='pt-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
-      {listings.map(listing => {
-        return <ListingCard key={listing.id} data={listing} signedInUser={signedInUser}/>
-      })}
+    <div className='pt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+      <Suspense fallback={<div>Loading listings...</div>}>
+        <ListingGrid />
+      </Suspense>
     </div>
   </Container>)
 }
