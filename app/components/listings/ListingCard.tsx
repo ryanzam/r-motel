@@ -26,8 +26,6 @@ const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actio
 
     const location = getCountryByValue(data.locationValue);
 
-    const imageSrc = data?.imageSrc !== ""  ? data.imageSrc : null
-
     const price = useMemo(() => {
         if(reservation) {
             return reservation.totalPrice;
@@ -56,7 +54,7 @@ const ListingCard:FC<IListingCardProps> = ({ data, signedInUser, disabled, actio
     return <div className="flex gap-2 flex-col col-span-1 cursor-pointer group"
                 onClick={() => router.push(`/listings/${data.id}`)}>
         <div className="w-full aspect-square relative rounded-lg overflow-hidden">
-            <Image src={imageSrc}
+            <Image src={data.imageSrc}
                 alt="listing"
                 fill
                 className="h-full w-full object-cover group-hover:scale-110 transition"/>
