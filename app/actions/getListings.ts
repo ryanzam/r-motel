@@ -4,13 +4,13 @@ export interface IListingsParams {
     userId?: string;
 }
 
-export default async function getListings (params: IListingsParams) {
+export default async function getListings(params: IListingsParams) {
     try {
-        const {userId} = await params;
+        const { userId } = params;
 
         let query: any = {};
 
-        if(userId) {
+        if (userId) {
             query.userId = userId;
         }
 
@@ -24,8 +24,8 @@ export default async function getListings (params: IListingsParams) {
             createdAt: listing.createdAt.toISOString()
         }));
         return safeListings;
-        
+
     } catch (error: any) {
         throw new Error(error.message);
-    }    
+    }
 }

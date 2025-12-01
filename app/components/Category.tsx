@@ -1,8 +1,7 @@
 'use client';
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
-import { useCallback } from "react";
 
 interface CategoryProps {
   text: string;
@@ -13,15 +12,15 @@ interface CategoryProps {
 const Category: React.FC<CategoryProps> = ({ text, icon: Icon, selected }) => {
   const router = useRouter();
 
-  const handleClick = useCallback(() => {
-    const params = new URLSearchParams(window.location.search);
+  const handleClick = () => {
+    const url = new URL(window.location.href);
     if (selected) {
-      params.delete("category");
+      url.searchParams.delete("category");
     } else {
-      params.set("category", text);
+      url.searchParams.set("category", text);
     }
-    router.push(`/?${params.toString()}`);
-  }, [selected, text, router]);
+    router.push(url.pathname + url.search);
+  }
 
   return (
     <div

@@ -2,7 +2,6 @@
 
 import Container from "@/app/components/Container";
 import ButtonHeart from "@/app/components/buttons/ButtonHeart";
-import { categories } from "@/app/components/navbar/Categories";
 import useLocation from "@/app/hooks/useLocation";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import Image from "next/image";
@@ -16,6 +15,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 import { Range } from "react-date-range";
+import { categories } from "@/app/components/navbar/CategoriesClient";
 
 const initDateRng = {
     startDate: new Date(),
