@@ -2,28 +2,28 @@ import { NextResponse } from "next/server";
 import prisma from "../../../../app/libs/prismadb";
 import getSigninUser from "@/app/actions/getSignedinUser";
 
-interface IParams {
-    reservationId?: string;
-}
 
-export async function DELETE(request: Request, 
-    { params }: { params: IParams }) {
+export async function DELETE(request: Request,
+    { params }: { params: Promise<{ reservationId: string }> }) {
 
     const signedinUser = await getSigninUser();
-    
-    if(!signedinUser) return NextResponse.error();
 
-    const {reservationId} = params;
+    if (!signedinUser) return NextResponse.error();
 
-    if(!reservationId) throw new Error("Invalid reservationId");
+    const { reservationId } = await params;
+
+    if (!reservationId) throw new Error("Invalid reservationId");
 
     const reservation = await prisma.reservation.deleteMany({
-        where: { id: reservationId,
+        where: {
+            id: reservationId,
             OR: [
                 { userId: signedinUser.id },
-                { listing: {
-                    userId: signedinUser.id
-                }}
+                {
+                    listing: {
+                        userId: signedinUser.id
+                    }
+                }
             ]
         }
     });
