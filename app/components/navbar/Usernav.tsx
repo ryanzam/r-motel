@@ -37,7 +37,7 @@ const Usernav:FC<IUsernavProps> = ({ signedinUser }) => {
 
     return <div className="relative">
         <div className="flex items-center gap-2">
-            <div className="mr-3 hover:text-neutral-400 text-sm cursor-pointer" onClick={handleRentClick}>Add</div>                
+            <div className="mr-3 hover:text-neutral-400 text-sm cursor-pointer border border-neutral-500 px-3 rounded-full" onClick={handleRentClick}>Add</div>                
             <div className="flex text-2xl md:block rounded-full hover:text-gray-500 cursor-pointer z-50">
                 <div onClick={toggleOpen} >
                 {signedinUser ? (

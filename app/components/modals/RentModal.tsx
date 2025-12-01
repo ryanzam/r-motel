@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import useRentModal from "@/app/hooks/useRentModal";
 import Modal from "./Modal"
-import { categories } from "../navbar/Categories";
 import InputCategory from "../inputs/InputCategory";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import SelectLocation from "../inputs/SelectLocation";
@@ -14,6 +13,7 @@ import Input from "../inputs/Input";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { categories } from "../navbar/CategoriesClient";
 
 enum STEPS {
     CATEGORY,

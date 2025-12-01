@@ -1,48 +1,43 @@
 'use client';
 
-import { FC, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
-import { useRouter, useSearchParams } from "next/navigation";
-import queryString from 'query-string';
 
-interface ICategoryProps {
-    text: string;
-    icon: IconType;
-    selected?: boolean;
+interface CategoryProps {
+  text: string;
+  icon: IconType;
+  selected?: boolean;
 }
 
-const Category:FC<ICategoryProps> = ({ text, icon: Icon, selected }) => {
+const Category: React.FC<CategoryProps> = ({ text, icon: Icon, selected }) => {
+  const router = useRouter();
 
-    const router = useRouter();
-    const params = useSearchParams();
+  const handleClick = () => {
+    const url = new URL(window.location.href);
+    if (selected) {
+      url.searchParams.delete("category");
+    } else {
+      url.searchParams.set("category", text);
+    }
+    router.push(url.pathname + url.search);
+  }
 
-    const handleClick = useCallback(() => {
-        let query = {};
-
-        if(params) {
-            query = queryString.parse(params.toString());
+  return (
+    <div
+      onClick={handleClick}
+      className={`
+        flex flex-col items-center justify-center gap-2 p-3
+        border-b-2 hover:text-neutral-800 transition cursor-pointer
+        ${selected
+          ? "border-b-neutral-800 text-neutral-800"
+          : "border-transparent text-neutral-500"
         }
-        const updatedQuery: any = {
-            ...query, category: text
-        }
-        if(params?.get("category") === text) {
-            delete updatedQuery.category
-        }      
-        
-        const url = queryString.stringifyUrl({ url: "/", query: updatedQuery }, { skipNull: true });
-        router.push(url);
-    }, [text, router, params])
+      `}
+    >
+      <Icon size={26} />
+      <div className="font-medium text-sm">{text}</div>
+    </div>
+  );
+};
 
-    return <div className={`
-        flex flex-col items-center hover:text-neutral-800 text-neutral-500 transition cursor-pointer
-        ${selected ? "text-blue-500" : "text-neutral-500"}
-    `}
-    onClick={handleClick}>
-        <Icon size={24} />
-        <div className="text-sm font-medium">
-            {text}
-        </div>
-    </div>;
-}
- 
 export default Category;
