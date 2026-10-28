@@ -89,7 +89,3 @@ Run tests using Jest:
 ```bash
 npm test
 ```
-
-## Contributing
-
-We welcome contributions! Please fork the repository and submit pull requests. Ensure you follow the coding standards and include tests where applicable. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
