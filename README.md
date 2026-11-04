@@ -1,11 +1,21 @@
-<h1 align="center"> R-Motel 🏠 </h1>
+# R-Motel 🏠
 
+A high-performance, multi-tenant SaaS application designed for renting, booking, and managing houses and apartments. This platform is engineered to deliver immediate page responsiveness, handle atomic transaction bookings securely, and scale easily under concurrent user traffic.
+
+## 🏗️ Architecture & Engineering Design
+
+#### This project avoids monolithic organization by splitting components into decoupled layers, enforcing a strict separation of concerns that ensures the codebase remains maintainable as business complexity grows.
+---
 [![Stars](https://img.shields.io/github/stars/ryanzam/r-motel?style=social)](https://github.com/ryanzam/r-motel) [![Deploy](https://img.shields.io/badge/Deploy-Vercel-brightgreen)](https://vercel.com/new/clone?repository-url=https://github.com/ryanzam/r-motel)
 
-<div align="center">
+<hr />
+
+<div>
   <img alt="last-commit" src="https://img.shields.io/github/last-commit/ryanzam/r-motel?style=flat&amp;logo=git&amp;logoColor=white&amp;color=0080ff" class="inline-block mx-1" style="margin: 0px 2px;">
   <img alt="repo-top-language" src="https://img.shields.io/github/languages/top/ryanzam/r-motel?style=flat&amp;color=0080ff" class="inline-block mx-1" style="margin: 0px 2px;">
   <img alt="repo-language-count" src="https://img.shields.io/github/languages/count/ryanzam/r-motel?style=flat&amp;color=0080ff" class="inline-block mx-1" style="margin: 0px 2px;">
+
+<hr />
 
 <p><em>Built with the tools and technologies:</em></p>
 
@@ -23,6 +33,8 @@
 <img alt="datefns" src="https://img.shields.io/badge/datefns-770C56.svg?style=flat&amp;logo=date-fns&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
 </div>
 </div>
+
+<hr/>
 
 ## Table of Contents
 
